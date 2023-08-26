@@ -1,8 +1,8 @@
-import './globals.css'
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
+import { ThemeProvider } from '@/components/theme-provider'
 
-const inter = Inter({ subsets: ['latin'] })
+import '@/styles/globals.css'
+import Header from '@/components/header'
 
 export const metadata: Metadata = {
   title: 'DokerGenius',
@@ -12,7 +12,16 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang='en'>
-      <body className={inter.className}>{children}</body>
+      <body>
+        <ThemeProvider
+          attribute='class'
+          defaultTheme='dark'
+          enableSystem
+        >
+          <Header />
+          {children}
+        </ThemeProvider>
+      </body>
     </html>
   )
 }
