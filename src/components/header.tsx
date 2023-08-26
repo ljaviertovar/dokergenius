@@ -1,19 +1,12 @@
-'use client'
 import NextLink from 'next/link'
 
-// import { useScrollPosition } from '@/hooks/useScrollPosition'
 import DockerGeniusIcon from '@/assets/icons/dokergenius-icon'
 import GitHubIcon from '@/assets/icons/github-icon'
 import XIcon from '@/assets/icons/x-Icon'
 // import DockerIcon from '@/assets/icons/docker-icon'
 
 export default function Header() {
-  // const scrollPosition = useScrollPosition()
   return (
-    // <header
-    //   className={` sticky top-0 z-50 transition-shadow ${
-    //     scrollPosition > 0 ? 'shadow bg-opacity-70 backdrop-blur-lg backdrop-filter' : 'shadow-none'
-
     <header className='supports-backdrop-blur:bg-background/60 sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur-0'>
       <div className='container mx-auto max-w-7xl flex h-14 items-center'>
         <div className='mr-4 hidden md:flex'>

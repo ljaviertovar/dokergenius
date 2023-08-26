@@ -1,5 +1,4 @@
-import PromptCard from '@/components/prompt-card'
-import DockerfileCard from '../components/dockerfile-card'
+import GenerateSection from '../components/generate-section'
 
 export default function Home() {
   return (
@@ -11,19 +10,18 @@ export default function Home() {
         <div className='px-12'>
           <div className='w-full mx-auto text-center md:w-11/12 xl:w-9/12 md:text-center'>
             <h1 className='text-3xl font-bold leading-tight tracking-tighter md:text-5xl lg:leading-[1.1]  mb-2'>
-              <span>.dockerfile</span>{' '}
+              <span>Effortless .dockerfile</span>{' '}
               <span className='block w-full py-2 text-transparent bg-clip-text leading-12 bg-gradient-to-r from-green-400 to-purple-500 lg:inline'>
-                generator
+                generation
               </span>{' '}
               <span>and</span>{' '}
               <span className='block w-full py-2 text-transparent bg-clip-text leading-12 bg-gradient-to-r from-green-400 to-purple-500 lg:inline'>
-                validatior
+                validation
               </span>
             </h1>
 
             <p className='max-w-[750px] mx-auto text-lg text-muted-foreground sm:text-xl'>
-              Start gaining the traction you've always wanted with our next-level templates and designs. Crafted to help
-              you tell your story.
+              You can enter instructions to generate or enter a Dockerfile to validate it.
             </p>
           </div>
 
@@ -44,14 +42,7 @@ export default function Home() {
         </div>
       </section>
       <section id='generation-section'>
-        <div className='flex flex-row gap-6'>
-          <div className='md:w-2/6'>
-            <PromptCard />
-          </div>
-          <div className='md:w-4/6'>
-            <DockerfileCard />
-          </div>
-        </div>
+        <GenerateSection />
       </section>
     </main>
   )
