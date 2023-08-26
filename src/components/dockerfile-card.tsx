@@ -5,15 +5,16 @@ import { gradientDark } from 'react-syntax-highlighter/dist/cjs/styles/hljs'
 
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 
+import useDockerfileGenerator from '@/hooks/useDockerfileGenerator'
+
+import { dockerfilePlaceholder } from '@/data/placeholders'
+
 const SyntaxHighlighter = dynamic(async () => await import('react-syntax-highlighter'))
 
-import { dockerfilePlaceholder } from "@/data/placeholders"
+export default function DockerfileCard() {
+  const { dockerfile } = useDockerfileGenerator()
+  const textCode = dockerfile as string ?? dockerfilePlaceholder
 
-interface Props {
-	textCode: string
-}
-
-export default function DockerfileCard({ textCode }: Props) {
   return (
     <Card>
       <CardHeader>
@@ -40,7 +41,6 @@ export default function DockerfileCard({ textCode }: Props) {
           {textCode}
         </SyntaxHighlighter>
       </CardContent>
-
     </Card>
   )
 }

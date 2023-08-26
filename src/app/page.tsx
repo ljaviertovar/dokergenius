@@ -10,19 +10,16 @@ export default function Home() {
         <div className='px-12'>
           <div className='w-full mx-auto text-center md:w-11/12 xl:w-9/12 md:text-center'>
             <h1 className='text-3xl font-bold leading-tight tracking-tighter md:text-5xl lg:leading-[1.1]  mb-2'>
-              <span>Effortless .dockerfile</span>{' '}
               <span className='block w-full py-2 text-transparent bg-clip-text leading-12 bg-gradient-to-r from-green-400 to-purple-500 lg:inline'>
-                generation
+              Effortless .dockerfile
               </span>{' '}
-              <span>and</span>{' '}
-              <span className='block w-full py-2 text-transparent bg-clip-text leading-12 bg-gradient-to-r from-green-400 to-purple-500 lg:inline'>
-                validation
-              </span>
+              <span>generation and validation</span>
+
             </h1>
 
-            <p className='max-w-[750px] mx-auto text-lg text-muted-foreground sm:text-xl'>
+            {/* <p className='max-w-[750px] mx-auto text-lg text-muted-foreground sm:text-xl'>
               You can enter instructions to generate or enter a Dockerfile to validate it.
-            </p>
+            </p> */}
           </div>
 
           {/* <div className='w-full mx-auto mt-20 text-center md:w-10/12'>

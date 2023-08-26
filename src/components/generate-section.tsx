@@ -1,22 +1,22 @@
 'use client'
 
+import { useState } from 'react'
+
 import PromptCard from './prompt-card'
 import DockerfileCard from './dockerfile-card'
-
-import useDockerfileGenerator from '@/hooks/useDockerfileGenerator'
-
-import { dockerfilePlaceholder } from '@/data/placeholders'
+import MyPromptsCard from './myprompts-card'
 
 export default function GenerateSection() {
-	const { generate, generating, error, dockerfile } = useDockerfileGenerator()
+  const [prompt, setPrompt] = useState('')
 
   return (
     <div className='flex flex-row gap-6'>
     <div className='md:w-2/6'>
-      <PromptCard generate={generate} generating={generating} error={error}/>
+        <PromptCard prompt={prompt} setPrompt={setPrompt } />
+        <MyPromptsCard setPrompt={setPrompt}/>
     </div>
     <div className='md:w-4/6'>
-      <DockerfileCard textCode={(dockerfile as string) ?? dockerfilePlaceholder}/>
+      <DockerfileCard/>
     </div>
   </div>
   )

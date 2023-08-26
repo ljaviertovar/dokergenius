@@ -1,20 +1,30 @@
 'use client'
-import { useState } from 'react'
 
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Textarea } from '@/components/ui/textarea'
 import { Button } from '@/components/ui/button'
 
 import { inputPlaceholder } from '@/data/placeholders'
+import useDockerfileGenerator from '@/hooks/useDockerfileGenerator'
+import GenerateIcon from '@/assets/icons/generate-icon'
 
+import '@/styles/loader-animation.css'
 interface Props {
-  generate: (value: string) => void
-  generating: boolean
-  error: string | null
+  prompt: string
+  setPrompt: (value: string) => void
 }
 
-export default function PromptCard({ generate, generating, error }: Props) {
-  const [prompt, setPrompt] = useState('')
+const LoadingDots = () => (
+  <div className='dot-wave'>
+    <div className='dot-wave__dot bg-background'></div>
+    <div className='dot-wave__dot bg-background'></div>
+    <div className='dot-wave__dot bg-background'></div>
+    <div className='dot-wave__dot bg-background'></div>
+  </div>
+)
+
+export default function PromptCard({ prompt, setPrompt }: Props) {
+  const { generate, generating, error } = useDockerfileGenerator()
 
   const handleSubmit = (ev: React.SyntheticEvent) => {
     ev.preventDefault()
@@ -42,7 +52,21 @@ export default function PromptCard({ generate, generating, error }: Props) {
             onChange={handleChange}
           />
           {error && <div>Error</div>}
-          <Button className='mt-6 w-full'>Generate or Validate</Button>
+          <Button
+            className='mt-6 w-full'
+            disabled={generating}
+          >
+            {!generating && (
+              <>
+              <span className='pr-2'>
+                <GenerateIcon />
+              </span>
+              Generate or Validate
+              </>
+            )}
+            {generating && <LoadingDots />}
+
+          </Button>
         </form>
       </CardContent>
     </Card>

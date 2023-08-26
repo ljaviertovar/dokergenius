@@ -21,6 +21,7 @@ specifiers:
   eslint-plugin-prettier: ^5.0.0
   eslint-plugin-promise: ^6.0.0
   eslint-plugin-react: ^7.33.2
+  lucide-react: ^0.269.0
   next: 13.4.19
   next-themes: ^0.2.1
   postcss: 8.4.28
@@ -45,6 +46,7 @@ dependencies:
   axios: 1.4.0
   class-variance-authority: 0.7.0
   clsx: 2.0.0
+  lucide-react: 0.269.0_react@18.2.0
   next: 13.4.19_biqbaboplfbrettd7655fr4n2y
   next-themes: 0.2.1_m2l4knchnqa6bzxbbtfxlzoxdy
   postcss: 8.4.28
@@ -2341,6 +2343,14 @@ packages:
     dependencies:
       yallist: 4.0.0
     dev: true
+
+  /lucide-react/0.269.0_react@18.2.0:
+    resolution: {integrity: sha512-+ViEb/2eJJt43/CtxpTfvqu/8gzK49cSUdeuqRuFYiZmX9AvwfumtETM4plhXHymfHb6/mVbHg9uIlc13y+uew==}
+    peerDependencies:
+      react: ^16.5.1 || ^17.0.0 || ^18.0.0
+    dependencies:
+      react: 18.2.0
+    dev: false
 
   /merge-stream/2.0.0:
     resolution: {integrity: sha512-abv/qOcuPfk3URPfDzmZU1LKmuw8kT+0nIHvKrKgFrwifol/doWcdA4ZqsWQ8ENrFKkd67Mfpo/LovbIUsbt3w==}
