@@ -26,15 +26,26 @@ export default function MyPromptsCard({ setPrompt }: Props) {
         <CardDescription>You can enter instructions to generate or enter a Dockerfile to validate it.</CardDescription>
       </CardHeader>
       <CardContent>
+        <div className='grid gap-2 h-44 overflow-auto'>
         {localPrompts.map(p => (
+          // <div
+          //   key={p}
+          //   className='-mx-2 flex items-start space-x-4 rounded-md bg-accent p-2 text-accent-foreground transition-all'
+          //
+          // >
+          //   {p}
+          // </div>
           <div
             key={p}
-            className='text-md border border-custom-dark-800 appearance-none rounded-md w-full p-4 bg-custom-gray-bg dark:bg-custom-dark-950 text-gray-700 dark:text-custom-dark-150 dark:hover:text-custom-dark-50 leading-tight mb-2 mt-2 dark:hover:border-white hover:cursor-pointer'
-            onClick={() => { setPrompt(p); }}
+            className='flex items-start w-full border space-x-4 rounded-md p-2 transition-all bg-[#020611] hover:bg-accent hover:text-accent-foreground cursor-pointer'
+            onClick={() => {
+              setPrompt(p)
+            }}
           >
-            {p}
+            <p className='text-sm text-muted-foreground'>{p}</p>
           </div>
         ))}
+          </div>
       </CardContent>
     </Card>
   )

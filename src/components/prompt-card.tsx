@@ -45,6 +45,7 @@ export default function PromptCard({ prompt, setPrompt }: Props) {
       <CardContent>
         <form onSubmit={handleSubmit}>
           <Textarea
+            className='bg-[#020611]'
             placeholder={inputPlaceholder}
             rows={6}
             required
