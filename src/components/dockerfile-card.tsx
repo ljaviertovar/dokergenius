@@ -1,7 +1,7 @@
 'use client'
 
 import dynamic from 'next/dynamic'
-import { gradientDark } from 'react-syntax-highlighter/dist/cjs/styles/hljs'
+import { nord } from 'react-syntax-highlighter/dist/cjs/styles/hljs'
 
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 
@@ -13,7 +13,7 @@ const SyntaxHighlighter = dynamic(async () => await import('react-syntax-highlig
 
 export default function DockerfileCard() {
   const { dockerfile } = useDockerfileGenerator()
-  const textCode = dockerfile as string ?? dockerfilePlaceholder
+  const textCode = (dockerfile as string) ?? dockerfilePlaceholder
 
   return (
     <Card>
@@ -23,18 +23,21 @@ export default function DockerfileCard() {
       <CardContent>
         <SyntaxHighlighter
           language='bash'
-          style={gradientDark}
+          style={nord}
           wrapLines={true}
           showLineNumbers={false}
-          lineNumberStyle={{ color: '#ccc' }}
           customStyle={{
+            background: '#020611',
             maxHeight: 'none',
             height: 'auto',
             overflow: 'visible',
             wordWrap: 'break-word',
             paddingRight: '3rem',
-            borderRadius: '0.3rem',
+            borderRadius: '0.5rem',
             padding: '1rem',
+            color: 'rgb(248, 250, 252)',
+
+            border: '1px solid rgb(30, 41, 59)',
           }}
           lineProps={{ style: { whiteSpace: 'pre-wrap' } }}
         >

@@ -14,7 +14,7 @@ export default function Header() {
   return (
     <header
       className={`sticky top-0 z-50 transition-shadow w-full
-    ${scrollPosition > 50 ? 'bg-[#034A7D] shadow bg-opacity-70 backdrop-blur-lg backdrop-filter' : 'bg-[#034A7D] shadow-none'}
+    ${scrollPosition > 56 ? 'bg-background/30 shadow bg-opacity-70 backdrop-blur-lg backdrop-filter border-b' : 'bg-[#034A7D] shadow-none'}
     `}
     >
       <div className='container mx-auto max-w-7xl flex h-14 items-center'>

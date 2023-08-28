@@ -6,7 +6,8 @@ import { Button } from '@/components/ui/button'
 
 import { inputPlaceholder } from '@/data/placeholders'
 import useDockerfileGenerator from '@/hooks/useDockerfileGenerator'
-import GenerateIcon from '@/assets/icons/generate-icon'
+
+import { MagicWandIcon } from '@radix-ui/react-icons'
 
 import '@/styles/loader-animation.css'
 interface Props {
@@ -59,14 +60,13 @@ export default function PromptCard({ prompt, setPrompt }: Props) {
           >
             {!generating && (
               <>
-              <span className='pr-2'>
-                <GenerateIcon />
-              </span>
-              Generate or Validate
+                <span className='mr-1'>
+                  <MagicWandIcon className='mt-px h-5 w-5' />
+                </span>
+                Generate or Validate
               </>
             )}
             {generating && <LoadingDots />}
-
           </Button>
         </form>
       </CardContent>
