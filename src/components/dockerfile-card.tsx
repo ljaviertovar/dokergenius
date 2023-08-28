@@ -4,6 +4,9 @@ import dynamic from 'next/dynamic'
 import { nord } from 'react-syntax-highlighter/dist/cjs/styles/hljs'
 
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
+import { Button } from '@/components/ui/button'
+
+import { CopyIcon } from '@radix-ui/react-icons'
 
 import useDockerfileGenerator from '@/hooks/useDockerfileGenerator'
 
@@ -18,7 +21,17 @@ export default function DockerfileCard() {
   return (
     <Card>
       <CardHeader>
-        <CardTitle>.dockerfile</CardTitle>
+        <CardTitle>
+          <div className='flex flex-row justify-between items-center'>
+            <span>.dockerfile</span>
+            <Button
+              variant='secondary'
+              className='shrink-0'
+            >
+              <CopyIcon />
+            </Button>
+          </div>
+        </CardTitle>
       </CardHeader>
       <CardContent>
         <SyntaxHighlighter

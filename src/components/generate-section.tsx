@@ -11,18 +11,21 @@ export default function GenerateSection() {
   const [prompt, setPrompt] = useState('')
 
   return (
-    <div className='flex flex-row gap-6'>
-      <div className='flex flex-col gap-6 md:w-2/6'>
-        <CreateCard />
-        
-        <PromptCard
-          prompt={prompt}
-          setPrompt={setPrompt}
-        />
+    <div className='flex flex-col lg:flex-row gap-6'>
+      <div className='flex flex-col md:flex-row lg:flex-col gap-6 lg:w-2/6'>
+        <div className='flex flex-1 flex-col lg:flex-col gap-6'>
+          <CreateCard />
+          <PromptCard
+            prompt={prompt}
+            setPrompt={setPrompt}
+          />
+        </div>
 
-        <MyPromptsCard setPrompt={setPrompt} />
+        <div className='hidden md:block display flex-1'>
+          <MyPromptsCard setPrompt={setPrompt} />
+        </div>
       </div>
-      <div className='md:w-4/6'>
+      <div className='lg:w-4/6'>
         <DockerfileCard />
       </div>
     </div>

@@ -5,6 +5,7 @@ import { ThemeProvider } from '@/components/theme-provider'
 
 import '@/styles/globals.css'
 import Header from '@/components/header'
+import Footer from '@/components/footer'
 
 const inter = Inter({
   subsets: ['latin'],
@@ -30,6 +31,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         >
           <Header />
           {children}
+          <Footer/>
         </ThemeProvider>
       </body>
     </html>

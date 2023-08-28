@@ -2,10 +2,10 @@ import GenerateSection from '../components/generate-section'
 
 export default function Home() {
   return (
-    <main className='w-full'>
+    <main className='w-full mb-20'>
       <section
         id='hero-section'
-        className='pt-12 pb-20'
+        className='pt-8 pb-10 lg:pt-12 lg:pb-20'
         style={{ background: 'linear-gradient(to bottom, #034A7D, #02253E, transparent)' }}
       >
         <div className='w-full md:w-10/12 mx-auto'>
@@ -26,7 +26,7 @@ export default function Home() {
           </div>
         </div>
       </section>
-      <div className='mx-auto max-w-7xl'>
+      <div className='container px-4 lg:px-8 mx-auto max-w-7xl'>
         <section id='generation-section'>
           <GenerateSection />
         </section>
