@@ -13,7 +13,7 @@ const inter = Inter({
 })
 
 export const metadata: Metadata = {
-  title: 'DokerGenius',
+  title: 'Dokyfile',
   description: 'Dockerfile generator and validator',
 }
 
