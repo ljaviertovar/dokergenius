@@ -1,49 +1,48 @@
 'use client'
 
 import { useState } from 'react'
-import axios from 'axios'
+
+// import { v4 as uuidv4 } from 'uuid'
 
 import { useDokyfileStore } from '@/store/useDokyfileStore'
 
-interface FetchState<T> {
+interface FetchState {
   generate: (value: string) => Promise<void>
   generating: boolean
   error: string | null
-  dockerfile: T | null
 }
 
-export default function useDockerfileGenerator<T>(): FetchState<T | string> {
+export default function useDockerfileGenerator(): FetchState {
   const [generating, setGenerating] = useState(false)
   const [error, setError] = useState<string | null>(null)
-  const [dockerfile, setDockerfile] = useState<T | null | string>(null)
 
-  const setPrompts = useDokyfileStore(state => state.setPrompts)
+  const { currentDokyfile, setCurrentDokyfile } = useDokyfileStore(state => state)
 
   const generate = async (prompt: string) => {
     try {
       setGenerating(true)
 
-      const { data, status } = await axios({
+      await fetch('/api/generation/dockerfile', {
         method: 'POST',
-        url: '/api/generation/dockerfile',
         headers: { 'Content-Type': 'application/json' },
-        data: {
-          prompt,
-        },
+        body: JSON.stringify({ prompt }),
       })
+        .then(async resp => await resp.json())
+        .then(resp => {
+          console.log({ resp })
 
-      if (status === 200) {
-        setDockerfile('')
-        setTimeout(() => {
-          setDockerfile(data.dockerfile)
+          setCurrentDokyfile({ ...currentDokyfile, dockerfile: '' })
 
-          if (data.message === 'ok') {
-            setPrompts(prompt)
-          }
-        }, 500)
-      } else {
-        setError('Error generating Dockerfile')
-      }
+          setTimeout(() => {
+            if (resp.message === 'ok') {
+              setCurrentDokyfile({ ...currentDokyfile, dockerfile: resp.dockerfile })
+            }
+          }, 500)
+        })
+        .catch(err => {
+          console.log(err)
+          setError('Error generating Dockerfile')
+        })
     } catch (err) {
       console.log(err)
       setError('Error generating Dockerfile')
@@ -52,5 +51,5 @@ export default function useDockerfileGenerator<T>(): FetchState<T | string> {
     }
   }
 
-  return { generate, generating, error, dockerfile }
+  return { generate, generating, error }
 }

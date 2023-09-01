@@ -1,40 +1,27 @@
-'use client'
-
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Textarea } from '@/components/ui/textarea'
 import { Button } from '@/components/ui/button'
 
 import { inputPlaceholder } from '@/data/placeholders'
-import useDockerfileGenerator from '@/hooks/useDockerfileGenerator'
 
 import { MagicWandIcon } from '@radix-ui/react-icons'
 
-import '@/styles/loader-animation.css'
-interface Props {
-  prompt: string
-  setPrompt: (value: string) => void
-}
+import { useDokyfileStore } from '@/store/useDokyfileStore'
+import useDockerfileGenerator from '@/hooks/useDockerfileGenerator'
+import LoaderIcon from '../assets/icons/loader-icon'
 
-const LoadingDots = () => (
-  <div className='dot-wave'>
-    <div className='dot-wave__dot bg-background'></div>
-    <div className='dot-wave__dot bg-background'></div>
-    <div className='dot-wave__dot bg-background'></div>
-    <div className='dot-wave__dot bg-background'></div>
-  </div>
-)
-
-export default function PromptCard({ prompt, setPrompt }: Props) {
+export default function PromptCard() {
+  const { currentDokyfile, setCurrentDokyfile } = useDokyfileStore(state => state)
   const { generate, generating, error } = useDockerfileGenerator()
 
   const handleSubmit = (ev: React.SyntheticEvent) => {
     ev.preventDefault()
-    generate(prompt)
+    generate(currentDokyfile.prompt)
   }
 
   const handleChange = (ev: React.ChangeEvent<HTMLTextAreaElement>) => {
     const value = ev.target?.value
-    setPrompt(value)
+    setCurrentDokyfile({ ...currentDokyfile, prompt: value })
   }
 
   return (
@@ -50,7 +37,7 @@ export default function PromptCard({ prompt, setPrompt }: Props) {
             placeholder={inputPlaceholder}
             rows={6}
             required
-            value={prompt}
+            value={currentDokyfile.prompt}
             onChange={handleChange}
           />
           {error && <div>Error</div>}
@@ -66,7 +53,7 @@ export default function PromptCard({ prompt, setPrompt }: Props) {
                 Generate or Validate
               </>
             )}
-            {generating && <LoadingDots />}
+            {generating && <LoaderIcon customBg='bg-background' />}
           </Button>
         </form>
       </CardContent>

@@ -1,25 +1,25 @@
 import { create } from 'zustand'
 import { persist } from 'zustand/middleware'
+import { type Dokyfile } from '../types'
+import { dockerfilePlaceholder, promptPlaceholder } from '@/data/placeholders'
 
 interface State {
-  prompts: string[]
+  currentDokyfile: Dokyfile
+}
+interface Actions {
+  setCurrentDokyfile: (value: Dokyfile) => void
 }
 
 const INITIAL_STATE: State = {
-  prompts: [],
-}
-
-interface Actions {
-  setPrompts: (value: string) => void
+  currentDokyfile: { prompt: promptPlaceholder, dockerfile: dockerfilePlaceholder },
 }
 
 export const useDokyfileStore = create(
   persist<State & Actions>(
     (set, get) => ({
-      prompts: INITIAL_STATE.prompts,
-      setPrompts: (value: string) => {
-        const savedPrompts = get().prompts
-        set(state => ({ prompts: [...savedPrompts, value] }))
+      currentDokyfile: INITIAL_STATE.currentDokyfile,
+      setCurrentDokyfile: value => {
+        set({ currentDokyfile: value })
       },
     }),
     {
