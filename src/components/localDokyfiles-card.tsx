@@ -1,8 +1,7 @@
-'use client'
+
 
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 
-// import { useDokyfileStore } from '@/store/useDokyfileStore'
 
 export default function LocalDokyfiles() {
 

@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 
 import { ThemeProvider } from '@/components/theme-provider'
+import { Toaster } from "@/components/ui/toaster"
 
 import '@/styles/globals.css'
 import Header from '@/components/header'
@@ -31,6 +32,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         >
           <Header />
           {children}
+          <Toaster />
           <Footer/>
         </ThemeProvider>
       </body>
