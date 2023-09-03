@@ -14,7 +14,7 @@ const INITIAL_STATE: State = {
   currentDokyfile: { prompt: promptPlaceholder, dockerfile: dockerfilePlaceholder },
 }
 
-export const useDokyfileStore = create(
+export const useGenerateStore = create(
   persist<State & Actions>(
     (set, get) => ({
       currentDokyfile: INITIAL_STATE.currentDokyfile,
@@ -23,7 +23,7 @@ export const useDokyfileStore = create(
       },
     }),
     {
-      name: 'dokyfile-store',
+      name: 'dokyfile-generate-store',
     },
   ),
 )

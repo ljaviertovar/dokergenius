@@ -1,10 +1,18 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
-import { Textarea } from '@/components/ui/textarea'
-import { Button } from '@/components/ui/button'
-
-import { inputPlaceholder } from '@/data/placeholders'
+import { useCreateStore } from '@/store/useCreateStore'
 
 export default function StepByStepCard() {
+  const { step, setStep } = useCreateStore(state => state)
+
+  const Step = () => {
+    switch (step) {
+      case 1:
+        return <div>Step1</div>
+
+      default:
+        return <div></div>
+    }
+  }
 
   return (
     <Card>
@@ -14,7 +22,7 @@ export default function StepByStepCard() {
       </CardHeader>
       <CardContent>
         <form>
-
+          <Step />
         </form>
       </CardContent>
     </Card>

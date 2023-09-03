@@ -1,11 +1,7 @@
-
-
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 
-
 export default function LocalDokyfiles() {
-
-  // const { dokyfiles, setCurrentDokyfile } = useDokyfileStore(state => state)
+  // const { dokyfiles, setCurrentDokyfile } = useGenerateStore(state => state)
 
   return (
     <Card>

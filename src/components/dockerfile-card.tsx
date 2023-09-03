@@ -4,7 +4,7 @@ import { nord } from 'react-syntax-highlighter/dist/cjs/styles/hljs'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { CheckCircledIcon } from '@radix-ui/react-icons'
 
-import { useDokyfileStore } from '../store/useGenerateStore'
+import { useGenerateStore } from '../store/useGenerateStore'
 import useFromStore from '../hooks/useFromStore'
 import LoaderIcon from '../assets/icons/loader-icon'
 import CopyButton from './copy-button'
@@ -12,7 +12,7 @@ import CopyButton from './copy-button'
 const SyntaxHighlighter = dynamic(async () => await import('react-syntax-highlighter'))
 
 export default function DockerfileCard() {
-  const currentDokyfile = useFromStore(useDokyfileStore, state => state.currentDokyfile)
+  const currentDokyfile = useFromStore(useGenerateStore, state => state.currentDokyfile)
   console.log({ currentDokyfile })
 
   return (

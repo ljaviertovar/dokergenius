@@ -4,7 +4,7 @@ import { useState } from 'react'
 
 // import { v4 as uuidv4 } from 'uuid'
 
-import { useDokyfileStore } from '@/store/useGenerateStore'
+import { useGenerateStore } from '@/store/useGenerateStore'
 
 interface FetchState {
   generate: (value: string) => Promise<void>
@@ -16,7 +16,7 @@ export default function useDockerfileGenerator(): FetchState {
   const [generating, setGenerating] = useState(false)
   const [error, setError] = useState<string | null>(null)
 
-  const { currentDokyfile, setCurrentDokyfile } = useDokyfileStore(state => state)
+  const { currentDokyfile, setCurrentDokyfile } = useGenerateStore(state => state)
 
   const generate = async (prompt: string) => {
     try {

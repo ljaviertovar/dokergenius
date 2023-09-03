@@ -6,12 +6,12 @@ import { inputPlaceholder } from '@/data/placeholders'
 
 import { MagicWandIcon } from '@radix-ui/react-icons'
 
-import { useDokyfileStore } from '@/store/useGenerateStore'
+import { useGenerateStore } from '@/store/useGenerateStore'
 import useDockerfileGenerator from '@/hooks/useDockerfileGenerator'
 import LoaderIcon from '../assets/icons/loader-icon'
 
 export default function PromptCard() {
-  const { currentDokyfile, setCurrentDokyfile } = useDokyfileStore(state => state)
+  const { currentDokyfile, setCurrentDokyfile } = useGenerateStore(state => state)
   const { generate, generating, error } = useDockerfileGenerator()
 
   const handleSubmit = (ev: React.SyntheticEvent) => {
