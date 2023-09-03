@@ -6,7 +6,7 @@ import { inputPlaceholder } from '@/data/placeholders'
 
 import { MagicWandIcon } from '@radix-ui/react-icons'
 
-import { useDokyfileStore } from '@/store/useDokyfileStore'
+import { useDokyfileStore } from '@/store/useGenerateStore'
 import useDockerfileGenerator from '@/hooks/useDockerfileGenerator'
 import LoaderIcon from '../assets/icons/loader-icon'
 

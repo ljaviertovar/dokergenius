@@ -4,7 +4,7 @@ import { useState } from 'react'
 
 // import { v4 as uuidv4 } from 'uuid'
 
-import { useDokyfileStore } from '@/store/useDokyfileStore'
+import { useDokyfileStore } from '@/store/useGenerateStore'
 
 interface FetchState {
   generate: (value: string) => Promise<void>
