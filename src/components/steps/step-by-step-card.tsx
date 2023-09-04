@@ -33,7 +33,7 @@ export default function StepByStepCard() {
   return (
     <Card>
       <CardHeader>
-        <CardTitle>Create a Dockerfile step-by-step</CardTitle>
+        <CardTitle className='text-lg'>Create a Dockerfile step-by-step</CardTitle>
         <CardDescription>Follow the steps to create your personalize Dockerfile.</CardDescription>
       </CardHeader>
       <CardContent>

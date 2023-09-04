@@ -1,60 +1,182 @@
-import { useState } from 'react'
-import ImageOption from './image-option'
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+  SelectGroup,
+  SelectLabel,
+} from '@/components/ui/select'
+import { Input } from "@/components/ui/input"
 
+const imageOptions = [
+  {
+    id: 1,
+    image: 'node:14',
+    value: 'node:14',
+  },
+  {
+    id: 2,
+    image: 'node:14.16.0-alpine3.13',
+    value: 'node:14.16.0-alpine3.13',
+  },
+  {
+    id: 3,
+    image: 'node:16',
+    value: 'node:16',
+  },
+  {
+    id: 4,
+    image: 'node:16-alpine',
+    value: 'node:16-alpine',
+  },
+  {
+    id: 5,
+    image: 'python:3.8',
+    value: 'python:3.8',
+  },
+  {
+    id: 6,
+    image: 'ruby:2.7',
+    value: 'ruby:2.7',
+  },
+  {
+    id: 7,
+    image: 'openjdk:11',
+    value: 'openjdk:11',
+  },
+  {
+    id: 8,
+    image: 'alpine:3.13',
+    value: 'alpine:3.13',
+  },
+  {
+    id: 9,
+    image: 'ubuntu:20.04',
+    value: 'ubuntu:20.04',
+  },
+  {
+    id: 10,
+    image: 'centos:8',
+    value: 'centos:8',
+  },
+  {
+    id: 11,
+    image: 'nginx:latest',
+    value: 'nginx:latest',
+  },
+  // {
+  //   id: 12,
+  //   image: 'httpd:2.4',
+  //   value: 'httpd:2.4',
+  // },
+  {
+    id: 13,
+    image: 'mysql:5.7',
+    value: 'mysql:5.7',
+  },
+  {
+    id: 14,
+    image: 'postgres:13',
+    value: 'postgres:13',
+  },
+  {
+    id: 15,
+    image: 'mongo:4.4',
+    value: 'mongo:4.4',
+  },
+  {
+    id: 16,
+    image: 'redis:6',
+    value: 'redis:6',
+  },
+  // {
+  //   id: 17,
+  //   image: 'docker.elastic.co/elasticsearch/elasticsearch:7.10.1',
+  //   value: 'docker.elastic.co/elasticsearch/elasticsearch:7.10.1',
+  // },
+  {
+    id: 18,
+    image: 'php:7.4',
+    value: 'php:7.4',
+  },
+  {
+    id: 19,
+    image: 'wordpress:5.7',
+    value: 'wordpress:5.7',
+  },
+  // {
+  //   id: 20,
+  //   image: 'jenkins/jenkins:lts',
+  //   value: 'jenkins/jenkins:lts',
+  // },
+  {
+    id: 21,
+    image: 'tomcat:9',
+    value: 'tomcat:9',
+  },
+  // {
+  //   id: 22,
+  //   image: 'nginx:alpine',
+  //   value: 'nginx:alpine',
+  // },
+  // {
+  //   id: 23,
+  //   image: 'doptopenjdk:11-jre-hotspot',
+  //   value: 'doptopenjdk:11-jre-hotspot',
+  // },
+  {
+    id: 24,
+    image: 'mcr.microsoft.com/dotnet/aspnet:5.0',
+    value: 'mcr.microsoft.com/dotnet/aspnet:5.0',
+  },
+  {
+    id: 25,
+    image: 'ruby:2.7-alpine',
+    value: 'ruby:2.7-alpine',
+  },
+]
 interface Props {
   step: number
   setStep: (value: number) => void
 }
 
 const BaseImageSelection = ({ step, setStep }: Props) => {
-  const [imageOptions] = useState([
-    {
-      name: 'node:14',
-      description: 'La imagen oficial de Node.js versión 14.',
-      features: ['Node.js 14', 'Alpine Linux', 'Tamaño: 69MB'],
-    },
-    {
-      name: 'node:16',
-      description: 'La imagen oficial de Node.js versión 16.',
-      features: ['Node.js 16', 'Alpine Linux', 'Tamaño: 72MB'],
-    },
-    {
-      name: 'node:latest',
-      description: 'La última versión de la imagen oficial de Node.js.',
-      features: ['Última versión de Node.js', 'Alpine Linux', 'Tamaño: 75MB'],
-    },
-  ])
-
-  // Estado de la opción de imagen seleccionada
-  const [selectedImage, setSelectedImage] = useState(null)
-
-  // Función para manejar la selección de una opción de imagen
-  const handleImageSelection = image => {
-    setSelectedImage(image)
-  }
-
   return (
-    <div className=' rounded-md shadow p-4'>
-      <h2 className='text-lg font-medium mb-4'>Paso 1: Seleccionar la base de la imagen</h2>
-      <div className='flex flex-col space-y-4'>
-        {/* Lista de opciones de imagen */}
-        {imageOptions.map(image => (
-          <ImageOption
-            key={image.name}
-            image={image}
-            selected={selectedImage?.name === image.name}
-            onSelect={() => handleImageSelection(image)}
-          />
-        ))}
+    <div className='space-y-1.5'>
+      <h3 className='text-md font-medium'>Step 1: Base of the image</h3>
+      <p className='text-sm text-muted-foreground'>
+        Select the base image that will serve as the starting point for the Docker container.
+      </p>
+      <div className='py-6'>
+				<Select
+
+          onValueChange={value => {
+            console.log(value)
+          }}
+        >
+          <SelectTrigger className='w-full'>
+            <SelectValue placeholder='Select a common base image' />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectGroup>
+              <SelectLabel>Images</SelectLabel>
+              {imageOptions.map(i => (
+                <SelectItem
+                  key={i.id}
+                  value={i.value}
+                >
+                  {i.image}
+                </SelectItem>
+              ))}
+            </SelectGroup>
+          </SelectContent>
+        </Select>
       </div>
-      {/* Botón Siguiente */}
-      <button
-        className='bg-blue-500 text-white py-2 px-4 rounded mt-4 disabled:bg-gray-400 disabled:pointer-events-none'
-        disabled={!selectedImage}
-        onClick={() => setStep(step + 1)}
-      >
-        Next
-      </button>
+			<p className='text-sm text-muted-foreground'>
+			or enter the one you want
+			</p>
+			<Input type="text" placeholder="Image" />
     </div>
   )
 }
