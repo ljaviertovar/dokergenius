@@ -18,7 +18,6 @@ export default function PromptCard() {
     ev.preventDefault()
 
     const existingDokyfile = localDokyfiles.find(dokyfile => dokyfile.prompt === currentDokyfile.prompt)
-    console.log('existingDokyfile', existingDokyfile)
     if (existingDokyfile) {
       setCurrentDokyfile({ ...existingDokyfile })
       return
