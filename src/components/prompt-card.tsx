@@ -11,11 +11,19 @@ import useDockerfileGenerator from '@/hooks/useDockerfileGenerator'
 import LoaderIcon from '../assets/icons/loader-icon'
 
 export default function PromptCard() {
-  const { currentDokyfile, setCurrentDokyfile } = useGenerateStore(state => state)
+  const { currentDokyfile, setCurrentDokyfile, localDokyfiles } = useGenerateStore(state => state)
   const { generate, generating } = useDockerfileGenerator()
 
   const handleSubmit = (ev: React.SyntheticEvent) => {
     ev.preventDefault()
+
+    const existingDokyfile = localDokyfiles.find(dokyfile => dokyfile.prompt === currentDokyfile.prompt)
+    console.log('existingDokyfile', existingDokyfile)
+    if (existingDokyfile) {
+      setCurrentDokyfile({ ...existingDokyfile })
+      return
+    }
+
     generate(currentDokyfile.prompt)
   }
 
