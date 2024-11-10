@@ -6,15 +6,18 @@ import { dockerfilePlaceholder, promptPlaceholder } from '@/data/placeholders'
 interface State {
   currentDokyfile: Dokyfile
   localDokyfiles: LocalDokyfile[]
+  generating: boolean
 }
 interface Actions {
   setCurrentDokyfile: (value: Dokyfile) => void
   setLocalDokyfiles: (value: LocalDokyfile) => void
+  setGenerating: (value: boolean) => void
 }
 
 const INITIAL_STATE: State = {
   currentDokyfile: { prompt: promptPlaceholder, dockerfile: dockerfilePlaceholder },
   localDokyfiles: [],
+  generating: false,
 }
 
 export const useGenerateStore = create(
@@ -22,12 +25,16 @@ export const useGenerateStore = create(
     (set, get) => ({
       currentDokyfile: INITIAL_STATE.currentDokyfile,
       localDokyfiles: INITIAL_STATE.localDokyfiles,
+      generating: INITIAL_STATE.generating,
       setCurrentDokyfile: value => {
         set({ currentDokyfile: value })
       },
       setLocalDokyfiles: value => {
         const dokyfiles = get().localDokyfiles
         set({ localDokyfiles: [...dokyfiles, value] })
+      },
+      setGenerating: value => {
+        set({ generating: value })
       },
     }),
     {

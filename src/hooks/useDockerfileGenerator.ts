@@ -17,10 +17,13 @@ export default function useDockerfileGenerator(): FetchState {
   const [generating, setGenerating] = useState(false)
   const [error, setError] = useState<string | null>(null)
 
-  const { currentDokyfile, setCurrentDokyfile, localDokyfiles, setLocalDokyfiles } = useGenerateStore(state => state)
+  const setGeneratingStore = useGenerateStore(state => state.setGenerating)
+
+  const { currentDokyfile, setCurrentDokyfile, setLocalDokyfiles } = useGenerateStore(state => state)
 
   const generate = async (prompt: string) => {
     setGenerating(true)
+    setGeneratingStore(true)
     setError(null)
 
     try {
@@ -53,6 +56,7 @@ export default function useDockerfileGenerator(): FetchState {
       setError(err instanceof Error ? err.message : 'Unknown error.')
     } finally {
       setGenerating(false)
+      setGeneratingStore(false)
     }
   }
 

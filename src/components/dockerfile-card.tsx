@@ -13,6 +13,8 @@ const SyntaxHighlighter = dynamic(async () => await import('react-syntax-highlig
 
 export default function DockerfileCard() {
   const currentDokyfile = useFromStore(useGenerateStore, state => state.currentDokyfile)
+  const generating = useGenerateStore(state => state.generating)
+
   let dockerfile = currentDokyfile?.dockerfile || ''
   dockerfile = currentDokyfile?.message ? currentDokyfile.message : dockerfile
   // console.log({ currentDokyfile })
@@ -46,24 +48,32 @@ export default function DockerfileCard() {
               <LoaderIcon customBg='bg-primary' />
             </div>
           ) : (
-            <SyntaxHighlighter
-              language='bash'
-              style={nord}
-              wrapLines={true}
-              showLineNumbers={false}
-              customStyle={{
-                background: '#020611',
-                maxHeight: 'none',
-                height: 'auto',
-                overflow: 'visible',
-                wordWrap: 'break-word',
-                padding: '0',
-                color: textColor,
-              }}
-              lineProps={{ style: { whiteSpace: 'pre-wrap' } }}
-            >
-              {dockerfile}
-            </SyntaxHighlighter>
+            <>
+              {generating ? (
+                <div className='w-full flex flex-row justify-center'>
+                  <LoaderIcon customBg='bg-primary' />
+                </div>
+              ) : (
+                <SyntaxHighlighter
+                  language='bash'
+                  style={nord}
+                  wrapLines={true}
+                  showLineNumbers={false}
+                  customStyle={{
+                    background: '#020611',
+                    maxHeight: 'none',
+                    height: 'auto',
+                    overflow: 'visible',
+                    wordWrap: 'break-word',
+                    padding: '0',
+                    color: textColor,
+                  }}
+                  lineProps={{ style: { whiteSpace: 'pre-wrap' } }}
+                >
+                  {dockerfile}
+                </SyntaxHighlighter>
+              )}
+            </>
           )}
         </div>
       </CardContent>

@@ -3,12 +3,11 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import useFromStore from '@/hooks/useFromStore'
 import { useGenerateStore } from '@/store/useGenerateStore'
+import { ScrollArea } from './ui/scroll-area'
 
 export default function LocalDokyfiles() {
   const localDokyfiles = useFromStore(useGenerateStore, state => state.localDokyfiles)
   const setCurrentDokyfile = useGenerateStore(state => state.setCurrentDokyfile)
-
-  // if (localDokyfiles === undefined || setCurrentDokyfile === undefined) return null
 
   return (
     <Card>
@@ -16,8 +15,8 @@ export default function LocalDokyfiles() {
         <CardTitle>My Dokerfiles</CardTitle>
         <CardDescription>You can select your previously created Dockefiles to iterate with them.</CardDescription>
       </CardHeader>
-      <CardContent>
-        <div className='grid gap-2 mh-44 overflow-auto'>
+      <ScrollArea className='h-44 pb-6'>
+        <CardContent className='grid gap-2'>
           {localDokyfiles?.map(localDokyfile => (
             <button
               key={localDokyfile.id}
@@ -29,8 +28,8 @@ export default function LocalDokyfiles() {
               <span className='text-sm text-muted-foreground'>{localDokyfile.prompt}</span>
             </button>
           ))}
-        </div>
-      </CardContent>
+        </CardContent>
+      </ScrollArea>
     </Card>
   )
 }

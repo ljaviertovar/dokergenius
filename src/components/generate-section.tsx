@@ -1,5 +1,3 @@
-'use client'
-
 import PromptCard from './prompt-card'
 import DockerfileCard from './dockerfile-card'
 
