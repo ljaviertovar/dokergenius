@@ -4,3 +4,9 @@ export interface Dokyfile {
   dockerfile: string
   message?: string
 }
+
+export interface LocalDokyfile {
+  id: string
+  prompt: string
+  dockerfile: string
+}

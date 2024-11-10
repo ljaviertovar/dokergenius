@@ -4,6 +4,7 @@ import PromptCard from './prompt-card'
 import DockerfileCard from './dockerfile-card'
 
 import CreateCard from './create-card'
+import LocalDokyfiles from './localDokyfiles-card'
 
 export default function GenerateSection() {
   return (
@@ -14,7 +15,9 @@ export default function GenerateSection() {
           <PromptCard />
         </div>
 
-        {/* <div className='hidden md:block display flex-1'> <LocalDokyfiles /> </div> */}
+        <div className='hidden md:block display flex-1'>
+          <LocalDokyfiles />
+        </div>
       </div>
       <div className='lg:w-4/6'>
         <DockerfileCard />

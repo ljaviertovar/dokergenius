@@ -1,7 +1,10 @@
 'use client'
 
 import { useState } from 'react'
+import { v4 as uuidv4 } from 'uuid'
+
 import { useGenerateStore } from '@/store/useGenerateStore'
+
 import { Dokyfile } from '@/types'
 
 interface FetchState {
@@ -13,7 +16,8 @@ interface FetchState {
 export default function useDockerfileGenerator(): FetchState {
   const [generating, setGenerating] = useState(false)
   const [error, setError] = useState<string | null>(null)
-  const { currentDokyfile, setCurrentDokyfile } = useGenerateStore(state => state)
+
+  const { currentDokyfile, setCurrentDokyfile, localDokyfiles, setLocalDokyfiles } = useGenerateStore(state => state)
 
   const generate = async (prompt: string) => {
     setGenerating(true)
@@ -33,9 +37,10 @@ export default function useDockerfileGenerator(): FetchState {
       }
 
       const data: Dokyfile = await response.json()
-      console.log({ data })
+
       if (data.message === 'ok') {
         setCurrentDokyfile({ ...currentDokyfile, message: '', dockerfile: data.dockerfile })
+        setLocalDokyfiles({ id: uuidv4(), prompt, dockerfile: data.dockerfile })
       } else {
         if (data.message) {
           setCurrentDokyfile({ ...currentDokyfile, dockerfile: '', message: data.message })

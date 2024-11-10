@@ -1,6 +1,6 @@
 'use client'
 import GenerateSection from '../components/generate-section'
-import CreateSection from '../components/create-section'
+// import CreateSection from '../components/create-section'
 
 export default function Home() {
   return (
