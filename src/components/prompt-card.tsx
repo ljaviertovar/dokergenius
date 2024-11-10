@@ -12,7 +12,7 @@ import LoaderIcon from '../assets/icons/loader-icon'
 
 export default function PromptCard() {
   const { currentDokyfile, setCurrentDokyfile } = useGenerateStore(state => state)
-  const { generate, generating, error } = useDockerfileGenerator()
+  const { generate, generating } = useDockerfileGenerator()
 
   const handleSubmit = (ev: React.SyntheticEvent) => {
     ev.preventDefault()
@@ -40,7 +40,7 @@ export default function PromptCard() {
             value={currentDokyfile.prompt}
             onChange={handleChange}
           />
-          {error && <div>Error</div>}
+
           <Button
             className='mt-6 w-full'
             disabled={generating}

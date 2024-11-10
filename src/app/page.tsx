@@ -26,12 +26,12 @@ export default function Home() {
         </div>
       </section>
       <div className='container px-4 lg:px-8 mx-auto max-w-7xl'>
-        {/* <section id='generation-section'>
+        <section id='generation-section'>
           <GenerateSection />
-        </section> */}
-        <section id='create-section'>
-          <CreateSection />
         </section>
+        {/* <section id='create-section'>
+          <CreateSection />
+        </section> */}
       </div>
     </main>
   )

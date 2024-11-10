@@ -10,21 +10,21 @@ import {
 import { Input } from "@/components/ui/input"
 
 const imageOptions = [
-  {
-    id: 1,
-    image: 'node:14',
-    value: 'node:14',
-  },
+  // {
+  //   id: 1,
+  //   image: 'node:14',
+  //   value: 'node:14',
+  // },
   {
     id: 2,
     image: 'node:14.16.0-alpine3.13',
     value: 'node:14.16.0-alpine3.13',
   },
-  {
-    id: 3,
-    image: 'node:16',
-    value: 'node:16',
-  },
+  // {
+  //   id: 3,
+  //   image: 'node:16',
+  //   value: 'node:16',
+  // },
   {
     id: 4,
     image: 'node:16-alpine',
@@ -37,8 +37,8 @@ const imageOptions = [
   },
   {
     id: 6,
-    image: 'ruby:2.7',
-    value: 'ruby:2.7',
+    image: 'ruby:2.7-alpine',
+    value: 'ruby:2.7-alpine',
   },
   {
     id: 7,
@@ -129,12 +129,7 @@ const imageOptions = [
     id: 24,
     image: 'mcr.microsoft.com/dotnet/aspnet:5.0',
     value: 'mcr.microsoft.com/dotnet/aspnet:5.0',
-  },
-  {
-    id: 25,
-    image: 'ruby:2.7-alpine',
-    value: 'ruby:2.7-alpine',
-  },
+  }
 ]
 interface Props {
   step: number
@@ -182,3 +177,4 @@ const BaseImageSelection = ({ step, setStep }: Props) => {
 }
 
 export default BaseImageSelection
+

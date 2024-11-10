@@ -8,13 +8,21 @@ import { useGenerateStore } from '../store/useGenerateStore'
 import useFromStore from '../hooks/useFromStore'
 import LoaderIcon from '../assets/icons/loader-icon'
 import CopyButton from './copy-button'
+import useDockerfileGenerator from '@/hooks/useDockerfileGenerator'
 
 const SyntaxHighlighter = dynamic(async () => await import('react-syntax-highlighter'))
 
 export default function DockerfileCard() {
   const currentDokyfile = useFromStore(useGenerateStore, state => state.currentDokyfile)
-  console.log({ currentDokyfile })
+  const { generating } = useDockerfileGenerator()
 
+  let dockerfile = currentDokyfile?.dockerfile || ''
+  dockerfile = currentDokyfile?.message ? currentDokyfile.message : dockerfile
+  // console.log({ currentDokyfile })
+
+  const textColor = currentDokyfile?.message ? '#f87171' : '#ffffff'
+
+  console.log({ generating })
   return (
     <Card>
       <CardHeader>
@@ -30,7 +38,7 @@ export default function DockerfileCard() {
                   Dockerfile copied!
                 </div>
               }
-              text={currentDokyfile?.dockerfile as string}
+              text={dockerfile}
             />
           </div>
         </CardTitle>
@@ -42,24 +50,30 @@ export default function DockerfileCard() {
               <LoaderIcon customBg='bg-primary' />
             </div>
           ) : (
-            <SyntaxHighlighter
-              language='bash'
-              style={nord}
-              wrapLines={true}
-              showLineNumbers={false}
-              customStyle={{
-                background: '#020611',
-                maxHeight: 'none',
-                height: 'auto',
-                overflow: 'visible',
-                wordWrap: 'break-word',
-                padding: '0',
-                color: 'rgb(248, 250, 252)',
-              }}
-              lineProps={{ style: { whiteSpace: 'pre-wrap' } }}
-            >
-              {currentDokyfile.dockerfile}
-            </SyntaxHighlighter>
+            <>
+              {generating ? (
+                <LoaderIcon customBg='bg-background' />
+              ) : (
+                <SyntaxHighlighter
+                  language='bash'
+                  style={nord}
+                  wrapLines={true}
+                  showLineNumbers={false}
+                  customStyle={{
+                    background: '#020611',
+                    maxHeight: 'none',
+                    height: 'auto',
+                    overflow: 'visible',
+                    wordWrap: 'break-word',
+                    padding: '0',
+                    color: textColor,
+                  }}
+                  lineProps={{ style: { whiteSpace: 'pre-wrap' } }}
+                >
+                  {dockerfile}
+                </SyntaxHighlighter>
+              )}
+            </>
           )}
         </div>
       </CardContent>
