@@ -7,10 +7,10 @@ import { getInnerText } from '@/utils/texts'
 import { EXAMPLE_MESSAGES_GENERATE_DOCKERFILE, SYSTEM_MESSAGE_GENERATE_DOCKERFILE } from '@/data/prompts'
 
 export async function POST(request: Request) {
-  const { prompt }: Partial<{ prompt: string }> = await request.json()
+  const { prompt, apikey }: Partial<{ prompt: string; apikey: string }> = await request.json()
 
-  if (!prompt) {
-    return NextResponse.json({ message: 'Prompt not found.' }, { status: 400 })
+  if (!prompt || !apikey) {
+    return NextResponse.json({ message: 'Prompt or ApiKey not found.' }, { status: 400 })
   }
 
   if (!validateInputPrompt(prompt)) {
@@ -23,10 +23,11 @@ export async function POST(request: Request) {
   }
 
   try {
-    const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY })
+    // const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY })
+    const openai = new OpenAI({ apiKey: apikey })
 
     const chatCompletion = await openai.chat.completions.create({
-      model: 'gpt-3.5-turbo',
+      model: 'gpt-4-1106-preview',
       messages: [
         SYSTEM_MESSAGE_GENERATE_DOCKERFILE,
         ...EXAMPLE_MESSAGES_GENERATE_DOCKERFILE,
@@ -49,6 +50,13 @@ export async function POST(request: Request) {
     return NextResponse.json({ dockerfile, message: 'ok' })
   } catch (err) {
     console.error(err)
-    return NextResponse.json({ message: 'Oops! Unexpected error.' }, { status: 200 })
+
+    let message = 'Oops! Unexpected error.'
+
+    if (err instanceof Error) {
+      message = err.message
+    }
+
+    return NextResponse.json({ message }, { status: 200 })
   }
 }

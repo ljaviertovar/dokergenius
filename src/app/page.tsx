@@ -1,4 +1,5 @@
 'use client'
+import { DialogAPIKey } from '@/components/DialogAPIKey'
 import GenerateSection from '../components/generate-section'
 // import CreateSection from '../components/create-section'
 
@@ -33,6 +34,7 @@ export default function Home() {
           <CreateSection />
         </section> */}
       </div>
+      <DialogAPIKey />
     </main>
   )
 }

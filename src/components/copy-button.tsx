@@ -14,17 +14,17 @@ export default function CopyButton({ msg, text }: Props) {
 
   return (
     <CopyToClipboard text={text}>
-    <Button
-      variant='secondary'
-      className='shrink-0'
-      onClick={() => {
-        toast({
-          description: msg,
-        })
-      }}
+      <Button
+        variant='secondary'
+        className='shrink-0'
+        onClick={() => {
+          toast({
+            description: msg,
+          })
+        }}
       >
-      <CopyIcon />
-    </Button>
-      </CopyToClipboard>
+        <CopyIcon />
+      </Button>
+    </CopyToClipboard>
   )
 }

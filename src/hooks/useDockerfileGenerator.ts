@@ -8,7 +8,7 @@ import { useGenerateStore } from '@/store/useGenerateStore'
 import { Dokyfile } from '@/types'
 
 interface FetchState {
-  generate: (value: string) => Promise<void>
+  generate: (value: string, apikey: string) => Promise<void>
   generating: boolean
   error: string | null
 }
@@ -21,7 +21,7 @@ export default function useDockerfileGenerator(): FetchState {
 
   const { currentDokyfile, setCurrentDokyfile, setLocalDokyfiles } = useGenerateStore(state => state)
 
-  const generate = async (prompt: string) => {
+  const generate = async (prompt: string, apikey: string) => {
     setGenerating(true)
     setGeneratingStore(true)
     setError(null)
@@ -30,7 +30,7 @@ export default function useDockerfileGenerator(): FetchState {
       const response = await fetch('/api/generation/dockerfile', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ prompt }),
+        body: JSON.stringify({ prompt, apikey }),
       })
 
       if (!response.ok) {

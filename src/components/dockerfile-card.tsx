@@ -29,7 +29,7 @@ export default function DockerfileCard() {
             <span>.dockerfile</span>
             <CopyButton
               msg={
-                <div className='flex flex-row'>
+                <div className='flex flex-row text-green-400'>
                   <span className='mr-1'>
                     <CheckCircledIcon className='mt-px h-5 w-5' />
                   </span>
