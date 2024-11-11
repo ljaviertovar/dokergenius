@@ -1,4 +1,7 @@
+'use client'
+import { DialogAPIKey } from '@/components/DialogAPIKey'
 import GenerateSection from '../components/generate-section'
+// import CreateSection from '../components/create-section'
 
 export default function Home() {
   return (
@@ -10,9 +13,7 @@ export default function Home() {
       >
         <div className='w-full md:w-10/12 mx-auto'>
           <div className='w-full mx-auto text-center md:w-11/12 xl:w-9/12 md:text-center'>
-            <h1
-              className='text-3xl font-bold leading-tight tracking-tighter md:text-5xl lg:leading-[1.1]  mb-2 textBalance'
-            >
+            <h1 className='text-3xl font-bold leading-tight tracking-tighter md:text-5xl lg:leading-[1.1]  mb-2 textBalance'>
               <span className='block w-full py-2 text-transparent bg-clip-text leading-12 bg-gradient-to-r from-[#0694FA] to-[#C1E4FE] lg:inline'>
                 Effortless .dockerfile
               </span>{' '}
@@ -29,7 +30,11 @@ export default function Home() {
         <section id='generation-section'>
           <GenerateSection />
         </section>
+        {/* <section id='create-section'>
+          <CreateSection />
+        </section> */}
       </div>
+      <DialogAPIKey />
     </main>
   )
 }

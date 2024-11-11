@@ -1,20 +1,12 @@
-import PromptCard from './prompt-card'
+import StepByStepCard from './steps/step-by-step-card'
 import DockerfileCard from './dockerfile-card'
 
-import CreateCard from './create-card'
-import LocalDokyfiles from './localDokyfiles-card'
-
-export default function GenerateSection() {
+export default function CreateSection() {
   return (
     <div className='flex flex-col lg:flex-row gap-6'>
       <div className='flex flex-col md:flex-row lg:flex-col gap-6 lg:w-2/6'>
         <div className='flex flex-1 flex-col lg:flex-col gap-6'>
-          <CreateCard />
-          <PromptCard />
-        </div>
-
-        <div className='hidden md:block display flex-1'>
-          <LocalDokyfiles />
+          <StepByStepCard />
         </div>
       </div>
       <div className='lg:w-4/6'>

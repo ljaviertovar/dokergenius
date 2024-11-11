@@ -6,17 +6,24 @@ import { inputPlaceholder } from '@/data/placeholders'
 
 import { MagicWandIcon } from '@radix-ui/react-icons'
 
-import { useDokyfileStore } from '@/store/useDokyfileStore'
+import { useGenerateStore } from '@/store/useGenerateStore'
 import useDockerfileGenerator from '@/hooks/useDockerfileGenerator'
 import LoaderIcon from '../assets/icons/loader-icon'
 
 export default function PromptCard() {
-  const { currentDokyfile, setCurrentDokyfile } = useDokyfileStore(state => state)
-  const { generate, generating, error } = useDockerfileGenerator()
+  const { currentDokyfile, setCurrentDokyfile, localDokyfiles, apikey } = useGenerateStore(state => state)
+  const { generate, generating } = useDockerfileGenerator()
 
   const handleSubmit = (ev: React.SyntheticEvent) => {
     ev.preventDefault()
-    generate(currentDokyfile.prompt)
+
+    const existingDokyfile = localDokyfiles.find(dokyfile => dokyfile.prompt === currentDokyfile.prompt)
+    if (existingDokyfile) {
+      setCurrentDokyfile({ ...existingDokyfile })
+      return
+    }
+
+    generate(currentDokyfile.prompt, apikey)
   }
 
   const handleChange = (ev: React.ChangeEvent<HTMLTextAreaElement>) => {
@@ -40,7 +47,7 @@ export default function PromptCard() {
             value={currentDokyfile.prompt}
             onChange={handleChange}
           />
-          {error && <div>Error</div>}
+
           <Button
             className='mt-6 w-full'
             disabled={generating}
