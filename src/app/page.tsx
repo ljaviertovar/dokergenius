@@ -1,5 +1,6 @@
 'use client'
-import { DialogAPIKey } from '@/components/DialogAPIKey'
+
+import { DialogAPIKey } from '@/components/dialog-apykey'
 import GenerateSection from '../components/generate-section'
 // import CreateSection from '../components/create-section'
 
