@@ -1,17 +1,15 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
+import { Popover, PopoverContent, PopoverTrigger } from './ui/popover'
 import { Textarea } from '@/components/ui/textarea'
 import { Button } from '@/components/ui/button'
 
-import { inputPlaceholder } from '@/data/placeholders'
-
 import { MagicWandIcon, QuestionMarkCircledIcon } from '@radix-ui/react-icons'
+import LoaderIcon from '../assets/icons/loader-icon'
 
 import { useGenerateStore } from '@/store/useGenerateStore'
 import useDockerfileGenerator from '@/hooks/useDockerfileGenerator'
-import LoaderIcon from '../assets/icons/loader-icon'
 
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from './ui/tooltip'
-import { Popover, PopoverContent, PopoverTrigger } from './ui/popover'
+import { inputPlaceholder } from '@/data/placeholders'
 
 export default function PromptCard() {
   const { currentDokyfile, setCurrentDokyfile, localDokyfiles, apikey } = useGenerateStore(state => state)
