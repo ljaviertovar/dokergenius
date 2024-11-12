@@ -35,7 +35,7 @@ export default function useDockerfileGenerator(): FetchState {
 
       if (!response.ok) {
         const errorResponse = await response.json()
-        setError(errorResponse.message || 'Error generating Dockerfile.')
+        setError(errorResponse.message ?? 'Error generating Dockerfile.')
         return
       }
 
@@ -48,7 +48,7 @@ export default function useDockerfileGenerator(): FetchState {
         if (data.message) {
           setCurrentDokyfile({ ...currentDokyfile, dockerfile: '', message: data.message })
         } else {
-          setError(data.message || 'Unexpected error.')
+          setError(data.message ?? 'Unexpected error.')
         }
       }
     } catch (err) {
