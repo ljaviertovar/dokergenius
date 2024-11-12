@@ -26,7 +26,7 @@ export default function useDockerfileGenerator(): FetchState {
     setGeneratingStore(true)
     setError(null)
 
-    let message = 'Unexpected error.'
+    const message = 'Unexpected error.'
 
     try {
       const response = await fetch('/api/generation/dockerfile', {
