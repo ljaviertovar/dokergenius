@@ -7,11 +7,11 @@ export default function Footer() {
         <p className='text-center text-sm leading-loose text-muted-foreground'>
           <span className=''>Develop by </span>
           <NextLink
-            href={'https://twitter.com/ljaviertovar'}
+            href={'https://www.ljaviertovar.dev/'}
             target='_blank'
             className='font-medium underline underline-offset-4'
           >
-            @ljaviertovar
+            ljaviertovar.dev
           </NextLink>
         </p>
       </div>
