@@ -1,5 +1,3 @@
-import React, { useState } from 'react'
-
 export default function ToolDependecies({ onNext, onBack }: any) {
   return null
   // const [selectedTools, setSelectedTools] = useState([])

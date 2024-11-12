@@ -23,7 +23,9 @@ export function DialogAPIKey() {
               className='bg-[#020611]'
               placeholder='sk-XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
               value={apikey}
-              onChange={e => setApikey(e.target.value)}
+              onChange={e => {
+                setApikey(e.target.value)
+              }}
             />
           </div>
         </CardContent>

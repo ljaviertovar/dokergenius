@@ -15,7 +15,7 @@ export default function DockerfileCard() {
   const currentDokyfile = useFromStore(useGenerateStore, state => state.currentDokyfile)
   const generating = useGenerateStore(state => state.generating)
 
-  let dockerfile = currentDokyfile?.dockerfile || ''
+  let dockerfile = currentDokyfile?.dockerfile ?? ''
   dockerfile = currentDokyfile?.message ? currentDokyfile.message : dockerfile
   // console.log({ currentDokyfile })
 

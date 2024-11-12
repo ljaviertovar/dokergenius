@@ -1,6 +1,6 @@
 import { create } from 'zustand'
 import { persist } from 'zustand/middleware'
-import { LocalDokyfile, Dokyfile } from '../types'
+import { type LocalDokyfile, type Dokyfile } from '../types'
 import { dockerfilePlaceholder, promptPlaceholder } from '@/data/placeholders'
 
 interface State {

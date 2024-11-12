@@ -1,20 +1,18 @@
-import React, { useState } from 'react'
-
-const customizationData = {
-  exposedPorts: [80, 443],
-  environmentVariables: {
-    API_URL: 'https://api.example.com',
-    NODE_ENV: 'production',
-  },
-  workingDirectory: '/app',
-  entryPoint: ['npm', 'start'],
-  command: ['npm', 'run', 'build'],
-  additionalCommands: [
-    'RUN apt-get update && apt-get install -y curl',
-    'RUN apt-get install -y python3-pip',
-    'RUN pip3 install awscli',
-  ],
-}
+// const customizationData = {
+//   exposedPorts: [80, 443],
+//   environmentVariables: {
+//     API_URL: 'https://api.example.com',
+//     NODE_ENV: 'production',
+//   },
+//   workingDirectory: '/app',
+//   entryPoint: ['npm', 'start'],
+//   command: ['npm', 'run', 'build'],
+//   additionalCommands: [
+//     'RUN apt-get update && apt-get install -y curl',
+//     'RUN apt-get install -y python3-pip',
+//     'RUN pip3 install awscli',
+//   ],
+// }
 
 export default function Execution({ onNext }: any) {
   return null

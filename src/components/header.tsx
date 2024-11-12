@@ -6,7 +6,6 @@ import { useScrollPosition } from '@/hooks/useScrollPosition'
 
 import { GitHubLogoIcon } from '@radix-ui/react-icons'
 import DockerGeniusIcon from '@/assets/icons/dokergenius-icon'
-import XIcon from '@/assets/icons/x-Icon'
 
 export default function Header() {
   const scrollPosition = useScrollPosition()

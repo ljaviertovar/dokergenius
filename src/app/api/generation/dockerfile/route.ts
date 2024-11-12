@@ -36,7 +36,7 @@ export async function POST(request: Request) {
     })
 
     const resp = chatCompletion.choices[0].message?.content ?? ''
-    let dockerfile = getInnerText(resp, '```bash', '```').replaceAll('```bash', '').replaceAll('```', '')
+    const dockerfile = getInnerText(resp, '```bash', '```').replaceAll('```bash', '').replaceAll('```', '')
 
     if (!dockerfile || dockerfile.trim() === '') {
       return NextResponse.json(

@@ -1,18 +1,16 @@
-import { useState } from 'react'
-
-const customizationData = {
-  name: 'my-image',
-  description: 'An image for my React app',
-  version: '1.0.0',
-  maintainer: {
-    name: 'John Doe',
-    email: 'johndoe@example.com',
-  },
-  labels: {
-    'com.example.vendor': 'ACME Incorporated',
-    'com.example.license': 'MIT',
-  },
-}
+// const customizationData = {
+//   name: 'my-image',
+//   description: 'An image for my React app',
+//   version: '1.0.0',
+//   maintainer: {
+//     name: 'John Doe',
+//     email: 'johndoe@example.com',
+//   },
+//   labels: {
+//     'com.example.vendor': 'ACME Incorporated',
+//     'com.example.license': 'MIT',
+//   },
+// }
 
 export default function Customization({ onNext, setCustomizationData }: any) {
   return null
