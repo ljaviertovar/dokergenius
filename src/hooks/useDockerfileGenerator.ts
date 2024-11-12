@@ -5,7 +5,7 @@ import { v4 as uuidv4 } from 'uuid'
 
 import { useGenerateStore } from '@/store/useGenerateStore'
 
-import { Dokyfile } from '@/types'
+import { type Dokyfile } from '@/types'
 
 interface FetchState {
   generate: (value: string, apikey: string) => Promise<void>
