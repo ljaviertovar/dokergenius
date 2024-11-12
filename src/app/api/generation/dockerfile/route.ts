@@ -18,7 +18,7 @@ export async function POST(request: Request) {
       {
         message: 'Invalid prompt. Please ensure your prompt is correctly formatted.',
       },
-      { status: 200 },
+      { status: 400 },
     )
   }
 

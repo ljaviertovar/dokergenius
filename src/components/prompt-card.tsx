@@ -4,15 +4,19 @@ import { Button } from '@/components/ui/button'
 
 import { inputPlaceholder } from '@/data/placeholders'
 
-import { MagicWandIcon } from '@radix-ui/react-icons'
+import { MagicWandIcon, QuestionMarkCircledIcon } from '@radix-ui/react-icons'
 
 import { useGenerateStore } from '@/store/useGenerateStore'
 import useDockerfileGenerator from '@/hooks/useDockerfileGenerator'
 import LoaderIcon from '../assets/icons/loader-icon'
 
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from './ui/tooltip'
+import { Popover, PopoverContent, PopoverTrigger } from './ui/popover'
+
 export default function PromptCard() {
   const { currentDokyfile, setCurrentDokyfile, localDokyfiles, apikey } = useGenerateStore(state => state)
-  const { generate, generating } = useDockerfileGenerator()
+  const { generate, generating, error } = useDockerfileGenerator()
+  console.log('PromptCard Error->', error)
 
   const handleSubmit = (ev: React.SyntheticEvent) => {
     ev.preventDefault()
@@ -34,7 +38,22 @@ export default function PromptCard() {
   return (
     <Card>
       <CardHeader>
-        <CardTitle>Enter the prompt for your Dockerfile</CardTitle>
+        <CardTitle className='flex justify-between items-center'>
+          Enter the prompt for your Dockerfile
+          <Popover>
+            <PopoverTrigger asChild>
+              <Button
+                variant='ghost'
+                size={'sm'}
+              >
+                <QuestionMarkCircledIcon />
+              </Button>
+            </PopoverTrigger>
+            <PopoverContent className='w-80'>
+              <p className='text-sm'>{inputPlaceholder}</p>{' '}
+            </PopoverContent>
+          </Popover>
+        </CardTitle>
         <CardDescription>You can enter instructions to generate or enter a Dockerfile to validate it.</CardDescription>
       </CardHeader>
       <CardContent>

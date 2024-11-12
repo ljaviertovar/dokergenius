@@ -26,6 +26,8 @@ export default function useDockerfileGenerator(): FetchState {
     setGeneratingStore(true)
     setError(null)
 
+    let message = 'Unexpected error.'
+
     try {
       const response = await fetch('/api/generation/dockerfile', {
         method: 'POST',
@@ -35,7 +37,8 @@ export default function useDockerfileGenerator(): FetchState {
 
       if (!response.ok) {
         const errorResponse = await response.json()
-        setError(errorResponse.message ?? 'Error generating Dockerfile.')
+        setCurrentDokyfile({ ...currentDokyfile, dockerfile: '', message: errorResponse.message ?? message })
+        setError(message)
         return
       }
 
@@ -47,13 +50,17 @@ export default function useDockerfileGenerator(): FetchState {
       } else {
         if (data.message) {
           setCurrentDokyfile({ ...currentDokyfile, dockerfile: '', message: data.message })
+          setError(data.message)
         } else {
-          setError(data.message ?? 'Unexpected error.')
+          setCurrentDokyfile({ ...currentDokyfile, dockerfile: '', message })
+          setError(message)
         }
       }
     } catch (err) {
-      console.error(err)
-      setError(err instanceof Error ? err.message : 'Unknown error.')
+      console.error('aca', err)
+      const message = err instanceof Error ? err.message : 'Unknown error.'
+      setCurrentDokyfile({ ...currentDokyfile, dockerfile: '', message })
+      setError(message)
     } finally {
       setGenerating(false)
       setGeneratingStore(false)

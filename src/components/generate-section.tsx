@@ -2,7 +2,7 @@ import PromptCard from './prompt-card'
 import DockerfileCard from './dockerfile-card'
 
 import CreateCard from './create-card'
-import LocalDokyfiles from './localDokyfiles-card'
+import LocalDokyfiles from './local-dokyfiles-card'
 
 export default function GenerateSection() {
   return (
