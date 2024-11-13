@@ -25,6 +25,40 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       className={inter.className}
     >
       <head>
+        <meta
+          property='og:image'
+          content='/images/dokyfile-og-image.jpg'
+        />
+        <meta
+          property='og:image:type'
+          content='/images/dokyfile-og-image.jpg'
+        />
+        <meta
+          property='og:image:width'
+          content='/images/dokyfile-og-image.jpg'
+        />
+        <meta
+          property='og:image:height'
+          content='/images/dokyfile-og-image.jpg'
+        />
+
+        <meta
+          name='twitter:image'
+          content='/images/dokyfile-og-image.jpg'
+        />
+        <meta
+          name='twitter:image:type'
+          content='/images/dokyfile-og-image.jpg'
+        />
+        <meta
+          name='twitter:image:width'
+          content='/images/dokyfile-og-image.jpg'
+        />
+        <meta
+          name='twitter:image:height'
+          content='/images/dokyfile-og-image.jpg'
+        />
+
         <link
           rel='apple-touch-icon'
           sizes='57x57'
