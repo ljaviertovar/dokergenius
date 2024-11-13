@@ -20,14 +20,14 @@ export default function Header() {
     }
     `}
     >
-      <div className='container mx-auto max-w-7xl flex h-14 items-center'>
-        <div className='mr-4 hidden md:flex'>
+      <div className='container mx-auto w-full max-w-7xl flex justify-between h-14 items-center'>
+        <div className='mr-4 flex'>
           <div className='mr-1 flex items-center space-x-1'>
             <DockerGeniusIcon />
-            <span className='hidden font-bold text-xl sm:inline-block'>okyfile</span>
+            <span className='font-bold text-xl sm:inline-block'>okyfile</span>
           </div>
         </div>
-        <div className='flex flex-1 items-center justify-between space-x-2 md:justify-end'>
+        <div className='flex flex-1 items-center  space-x-2 justify-end'>
           <nav className='flex items-center gap-2'>
             <NextLink
               href='https://github.com/ljaviertovar/dokergenius'

@@ -15,7 +15,7 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: 'Dokyfile',
-  description: 'Dockerfile generator and validator',
+  description: 'Dockerfile generator and validator.',
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

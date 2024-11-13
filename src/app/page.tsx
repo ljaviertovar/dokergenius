@@ -6,17 +6,17 @@ import GenerateSection from '../components/generate-section'
 
 export default function Home() {
   return (
-    <main className='w-full mb-20'>
+    <main className='w-full mb-36'>
       <section
         id='hero-section'
-        className='pt-8 pb-10 lg:pt-12 lg:pb-20'
+        className='pt-6 pb-10 lg:pt-12 lg:pb-20'
         style={{ background: 'linear-gradient(to bottom, #034A7D, #02253E, transparent)' }}
       >
         <div className='w-full md:w-10/12 mx-auto'>
-          <div className='w-full mx-auto text-center md:w-11/12 xl:w-9/12 md:text-center'>
+          <div className='w-full mx-auto text-center md:w-[600px] md:text-center'>
             <h1 className='text-3xl font-bold leading-tight tracking-tighter md:text-5xl lg:leading-[1.1]  mb-2 textBalance'>
               <span className='block w-full py-2 text-transparent bg-clip-text leading-12 bg-gradient-to-r from-[#0694FA] to-[#C1E4FE] lg:inline'>
-                Effortless .dockerfile
+                Effortless Dockerfile
               </span>{' '}
               <span className='text-[#E0F2FE]'>generation and validation</span>
             </h1>

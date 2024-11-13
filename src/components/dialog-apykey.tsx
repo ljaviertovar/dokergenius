@@ -8,7 +8,7 @@ export function DialogAPIKey() {
   const setApikey = useGenerateStore(state => state.setApikey)
 
   return (
-    <div className='fixed z-30 right-8 bottom-8 shadow-lg w-[300px]'>
+    <div className='fixed z-30 right-8 bottom-10 md:bottom-8 shadow-lg w-[300px]'>
       <Card className='bg-[#020611]'>
         <CardHeader className='pb-0'>
           <CardTitle>Enter your OpenAI API key to try out Dokyfile.</CardTitle>
