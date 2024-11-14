@@ -17,7 +17,7 @@ export function DialogAPIKey() {
           </CardDescription>
         </CardHeader>
         <CardContent>
-          <div className='mt-4'>
+          <div className='mt-4 md:mt-0'>
             <Input
               id='api-key'
               className='bg-[#020611]'
